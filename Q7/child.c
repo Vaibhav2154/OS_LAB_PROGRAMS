@@ -32,5 +32,5 @@ int main(int argc,char *argv[]){
   ptr +=strlen(ptr);
   shmctl(shmid,IPC_RMID,NULL);
   return 0;
-
+  
 }

@@ -1,5 +1,4 @@
 #!/bin/bash
-
 echo "Enter low value: "
 read low
 echo "Enter high value: "

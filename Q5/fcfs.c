@@ -7,15 +7,15 @@ typedef struct{
 
 
 void fcfs(process p[],int n){
-  int eT = p[0].aT;
+        int currentTime = p[0].aT;
   int tTAT;
-  for(int i=0;i<n;i++){
-    if(eT < p[i].aT) eT = p[i].aT;
-    p[i].wT = eT - p[i].aT;
-    eT +=p[i].bT;
-    p[i].cT = eT - p[i].aT;
-    p[i].tAT = p[i].cT - p[i].aT;
-    printf("| (%d) P%d (%d) ", eT - p[i].bT, p[i].pid, eT);
+        for(int i=0;i<n;i++){
+                if(currentTime < p[i].aT) currentTime = p[i].aT;
+                p[i].wT = currentTime - p[i].aT;
+                currentTime += p[i].bT;
+                p[i].cT = currentTime - p[i].aT;
+                p[i].tAT = p[i].cT - p[i].aT;
+                printf("| (%d) P%d (%d) ", currentTime - p[i].bT, p[i].pid, currentTime);
   }
   printf("|\n");
         printf("\nObservation Table:\nPID\tAT\tBT\tCT\tTAT\tWT\n");

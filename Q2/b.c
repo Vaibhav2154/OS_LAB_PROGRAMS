@@ -23,13 +23,13 @@ void calculate_time(Process *processes, int n)
 
         while (completed_processes < n)
         {
-                int hpi = -1, hp = INT_MIN; // highest priority index and highest priority
+                int hpi = -1, hp = INT_MAX; // highest priority index and highest priority
 
                 for (int i = 0; i < n; i++)
                 {
                         if (processes[i].arrivalTime <= currTime && !processes[i].completed)
                         {
-                                if (processes[i].priority > hp)
+                                if (processes[i].priority < hp)
                                 {
                                         hp = processes[i].priority;
                                         hpi = i;
@@ -103,7 +103,7 @@ void main()
                 scanf("%d%d%d", &processes[i].arrivalTime, &processes[i].burstTime, &processes[i].priority);
                 processes[i].remainingTime = processes[i].burstTime;
         }
-        printf("\nNote: Higher priority number means higher priority\n");
+        printf("\nNote: Higher priority number means lower priority\n");
         calculate_time(processes, n);
         printInfo(processes, n);
         free(processes);
