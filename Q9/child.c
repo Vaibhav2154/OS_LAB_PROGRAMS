@@ -10,18 +10,13 @@
 #include<fcntl.h>
 
 int main(int argc,char *argv[]){
-  int k = 0, n1,n2,n3;
+  int k = 0,n3;
   void * ptr;
   n3 = -1;
   int shmid = shmget(1122,4096,0666);
   ptr = shmat(shmid,NULL,0666);
   int i = atoi(argv[1]);
-  // n1 = 0;
-  // n2 = 1;
-  // sprintf(ptr,"%d ",n1);
-  // ptr +=strlen(ptr);
-  // sprintf(ptr,"%d ",n2);
-  // ptr +=strlen(ptr);
+
   while(i!=k){
     n3 +=2;
     sprintf(ptr,"%d ",n3);
