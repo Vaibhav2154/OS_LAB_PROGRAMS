@@ -4,6 +4,7 @@
 #include <stdio.h>
 #define MaxItems 3
 #define BufferSize 3
+#include<time.h>
 
 sem_t empty;
 sem_t full;
@@ -43,17 +44,17 @@ void *consumer(void *cno)
 int main()
 {
         pthread_t pro[3],con[3];
-
+        // srand(time(NULL));
         pthread_mutex_init(&mutex, NULL);
         sem_init(&empty,0,BufferSize);
         sem_init(&full,0,0);
         int a[3] = {1,2,3};
 
         for(int i = 0; i < 3; i++) {
-                pthread_create(&pro[i], NULL, (void *)producer, (void *)&a[i]);
+                pthread_create(&pro[i], NULL, producer, &a[i]);
         }
         for(int i = 0; i < 3; i++) {
-                pthread_create(&con[i], NULL, (void *)consumer, (void *)&a[i]);
+                pthread_create(&con[i], NULL, consumer, &a[i]);
         }
         for(int i = 0; i < 3; i++) {
                 pthread_join(pro[i], NULL);

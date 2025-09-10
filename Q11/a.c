@@ -30,10 +30,10 @@ int main(int argc, char *argv[]){
         }
         int n = atoi(argv[1]);
         pthread_t thread1, thread2;
-        pthread_attr_t attr;
-        pthread_attr_init(&attr);
-        pthread_create(&thread1, &attr, add, &n);
-        pthread_create(&thread2, &attr, factorial, &n);
+        // pthread_attr_t attr;
+        // pthread_attr_init(&attr);
+        pthread_create(&thread1, 0, add, &n);
+        pthread_create(&thread2, 0, factorial, &n);
         pthread_join(thread1, NULL);
         pthread_join(thread2, NULL);
         printf("Inside the main thread\n");
